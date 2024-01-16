@@ -1,7 +1,7 @@
 BayesDLR: Bayesian Inference for the Diagnostic Likelihood Ratio
 ================
 Josh Betz - Biostatistics Consulting Center (<jbetz@jhu.edu>)
-2024-01-12 05:20
+2024-01-16 09:37
 
 - [Using BayesDLR:](#using-bayesdlr)
   - [Installation:](#installation)
@@ -195,13 +195,13 @@ association comparing the prevalence of an exposure in a population with
 a condition to the prevalence of an exposure in a population without
 that condition.
 
-$$PR_{E \vert D} = \frac{Pr\{\text{Exposed} | \text{Disease}\}}{Pr\{\text{Exposed}|\text{No Disease}\}}$$
+$$PR_{E \vert D} = \frac{Pr(\text{Exposed} | \text{Disease})}{Pr(\text{Exposed}|\text{No Disease})}$$
 For example, if the exposure is a genetic variant that’s considered a
 potential diagnostic marker or test $T$, the prevalence ratio of the
 exposure in those with the disease to those without is the same as the
 *positive diagnostic likelihood ratio*:
 
-$$LR_{+} = \frac{Pr\{T+ \vert D+\}}{Pr\{T+ \vert D-\}} = \frac{\text{sensitivity}}{1\,-\,\text{specificity}}$$
+$$LR_{+} = \frac{Pr\{T+ \vert D+\}}{Pr\{T+ \vert D-\}} = \frac{\text{sensitivity}}{1 - \text{specificity}}$$
 
 ------------------------------------------------------------------------
 
@@ -226,18 +226,18 @@ When we have a fixed sample size of $n$ independent individuals, each
 from a population with prevalence $\pi$, we can model the number of
 prevalent cases in this sample using the binomial likelihood model:
 
-$$Y \sim Bin(n, \pi):\,Pr\{Y = y|n, \pi\} = {n \choose y} \pi^{y} (1 - \pi)^{n-y}$$
+$$Y \sim Bin(n, \pi): \, Pr(Y = y|n, \pi) = {n \choose y} \pi^{y} (1 - \pi)^{n-y}$$
 This binomial likelihood can be approximated using a Poisson
 distribution with rate parameter $\lambda = n\pi$ if $n$, the number of
 observations, is large and $\pi_{k}$, the probability (i.e. prevalence),
 is small.
 
-$$Y \sim Poisson(\lambda = n\pi):\,Pr\{Y = y|n, \pi\} = \frac{(n\pi)^{y}e^{-n\pi}}{y!}$$
+$$Y \sim Poisson(\lambda = n\pi): \, Pr(Y = y|n, \pi) = \frac{(n\pi)^{y} e^{-n\pi}}{y!}$$
 We can model the proportion of type $k$ variants that arose from cases
 out of the the total number of type $k$ variants observed, denoted
 $\theta_{k}$, using a binomial distribution:
 
-$$Y_{0k} \sim Poisson(n_{0k}\pi_{0k}),\, Y_{1k} \sim Poisson(n_{1k}\pi_{1k});\quad Y_{0k} \perp Y_{1k}; \quad \left(Y_{1k} \vert Y_{0k} + Y_{1k} = T_{k}\right) \sim Bin(T_{k}, \theta_{k}),$$
+$$Y_{0k} \sim Poisson(n_{0k}\pi_{0k}), \, Y_{1k} \sim Poisson(n_{1k}\pi_{1k}); \quad Y_{0k} \perp Y_{1k}; \quad \left(Y_{1k} \vert Y_{0k} + Y_{1k} = T_{k}\right) \sim Bin(T_{k}, \theta_{k}),$$
 
 where $\theta_{k} = (n_{1k}\pi_{1k})/(n_{1k}\pi_{1k} + n_{0k}\pi_{0k})$,
 the rate of occurrences in cases divided by the total rate of
