@@ -41,7 +41,10 @@ First, install [the R environment for statistical computing and the Rstudio IDE]
   - `optimx` - Optimization for fitting models
   - `tidyverse` - Data wrangling and plotting
 
-In R, you can do the following:
+
+
+
+If you do not use the RStudio `Packages` pane, you can install and update packages from the command line: the `update_packages` and `ask_to_update` parameters can be commented or uncommented depending on your preferences.
 
 ```{r, eval = FALSE}
 required_packages <-
@@ -80,6 +83,8 @@ if(update_packages & (length(packages_to_update) > 0)){
   )
 }
 ```
+
+
 
 
 In Rstudio, go to `File` > `New Project` > `Version Control` > `Git`.

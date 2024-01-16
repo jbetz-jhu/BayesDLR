@@ -1,7 +1,7 @@
 BayesDLR: Bayesian Inference for the Diagnostic Likelihood Ratio
 ================
 Josh Betz - Biostatistics Consulting Center (<jbetz@jhu.edu>)
-2024-01-16 10:01
+2024-01-16 10:07
 
 - [Using BayesDLR:](#using-bayesdlr)
   - [Installation:](#installation)
@@ -44,7 +44,10 @@ check for updates if these packages are already installed:
 - `optimx` - Optimization for fitting models
 - `tidyverse` - Data wrangling and plotting
 
-In R, you can do the following:
+If you do not use the RStudio `Packages` pane, you can install and
+update packages from the command line: the `update_packages` and
+`ask_to_update` parameters can be commented or uncommented depending on
+your preferences.
 
 ``` r
 required_packages <-
