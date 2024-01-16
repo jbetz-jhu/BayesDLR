@@ -31,11 +31,56 @@ using maximum marginal likelihood. Estimation is done using the
 
 ## Installation:
 
-First, install [the R environment for statistical computing and the
-Rstudio IDE](https://posit.co/download/rstudio-desktop/). In RStudio,
-install the following packages, or check for updates if these packages
-are already installed. This can be done using `install.packages()` and
-`update.packages()` or using the `Packages` tab of the RStudio IDE.
+First, install [the R environment for statistical computing and the Rstudio IDE](https://posit.co/download/rstudio-desktop/). This also requires additional packages to be installed from CRAN: this can be done using `install.packages()` and
+`update.packages()` or using the `Packages` tab of the RStudio IDE. Install the following packages, or check for updates if these packages are already installed:
+
+  - `callr` - Calling R sessions from within R
+  - `config` - Reading YAML configuration files
+  - `openssl` - SHA256 File hashes for identifying versions of dependencies
+  - `openxlsx` - Writing output in Excel format
+  - `optimx` - Optimization for fitting models
+  - `tidyverse` - Data wrangling and plotting
+
+In R, you can do the following:
+
+```{r, eval = FALSE}
+required_packages <-
+  c("callr", "config", "openssl", "openxlsx", "optimx", "tidyverse")
+
+update_packages <- TRUE # Update installed packages
+# update_packages <- FALSE # Do not update any installed packages
+  
+ask_to_update <- FALSE # Update all packages
+# ask_to_update <- TRUE # Ask for each package
+
+installed_packages <-
+  as.data.frame(installed.packages()[,c(1,3:4)])
+
+packages_to_install <-
+  setdiff(
+    x = required_packages,
+    y = installed_packages$Package
+  )
+
+packages_to_update <-
+  setdiff(
+    x = required_packages,
+    y = packages_to_install
+  )
+
+if(length(packages_to_install) > 0){
+  install.packages(
+    pkgs = packages_to_install
+  )
+}
+
+if(update_packages & (length(packages_to_update) > 0)){
+  update.packages(
+    ask = ask_to_update
+  )
+}
+```
+
 
 In Rstudio, go to `File` > `New Project` > `Version Control` > `Git`.
 In the repository URL, enter [https://github.com/jbetz-jhu/BayesDLR](https://github.com/jbetz-jhu/BayesDLR).
