@@ -69,7 +69,7 @@ if(file.exists(processed_rdata_path)){
   bb_2_input_size <- bb_2_input_info$size/2^(10)
   bb_2_input_mod_time <- bb_2_input_info$mtime
   
-  bb_2_source_data_file <- input_file_information$input_data_file
+  bb_2_source_data_file <- input_file
   bb_2_source_data_sha256 <- input_file_information$input_sha256
   
   bb_2_input_file <- processed_rdata_file
@@ -78,7 +78,7 @@ if(file.exists(processed_rdata_path)){
 }
 
 output_file <-
-  paste0(data_subfolder, "_", analysis_version_name,
+  paste0(data_subfolder, "-", analysis_version_name,
          "_2-Component_Beta_Binomial_v", code_version, ".Rdata")
 
 output_path <-

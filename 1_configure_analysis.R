@@ -80,7 +80,7 @@ all_dependencies_installed <-
   all(required_packages %in% installed_packages$Package)
 
 if(!all_dependencies_installed){
-  stop("Run 0_check_BayesDLR_configuration.R to install required packages.")
+  stop("Run 0_check_BayesDLR_configuration.r to install required packages.")
 } else if(working_subfolder != "BayesDLR"){
   stop("Load BayesDLR.Rproj before proceeding. See README.MD for instructions.")
 } else {

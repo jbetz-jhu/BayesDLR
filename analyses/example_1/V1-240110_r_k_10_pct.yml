@@ -1,0 +1,17 @@
+default:
+  data_subfolder: example_1
+  data_version_name: V1-240110
+  input_file: example_1_component_v1_240110.csv
+  input_sheet_name: Sheet1
+  input_path: S:/Bayes_Variant_DLR_d/BayesDLR/data/example_1/raw_data/example_1_component_v1_240110.csv
+  row_id: event
+  case_denominator: n_1
+  case_count: y_1
+  control_denominator: n_0
+  control_count: y_0
+  flag_column: flag
+  flags_include: include|Include
+  r_k_threshold: 0.1
+  analysis_version_name: V1-240110_r_k_10_pct
+  bb_1_component_seed: 220101
+  bb_2_component_seed: 385643

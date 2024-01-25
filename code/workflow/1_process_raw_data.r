@@ -15,12 +15,12 @@ project_root <-
   Sys.getenv(x = "bayes_dlr_project_root")
 
 
-# For debugging only: Manually set parameters
-data_subfolder <- "example_1"
-data_version_name <- "V1-240110"
-config_path <- file.path(getwd(), "analyses/example_1/V1-240110_r_k_10_pct.yml")
-overwrite_existing_output <- TRUE
-project_root <- getwd()
+## For debugging only: Manually set parameters
+# data_subfolder <- "example_1"
+# data_version_name <- "V1-240110"
+# config_path <- file.path(getwd(), "analyses/example_1/V1-240110_r_k_10_pct.yml")
+# overwrite_existing_output <- TRUE
+# project_root <- getwd()
 
 
 
