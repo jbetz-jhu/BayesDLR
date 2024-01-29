@@ -170,6 +170,16 @@ if(!is.null(flag_column) & !has_flag) {
 
 # Select relevant columns: Standardize names.
 # If a flag exists, trim/squish flag, keep rows flagged for inclusion.
+
+required_vars <-
+  c(row_id, row_id, case_denominator, case_count, 
+    control_denominator, control_count)
+  
+if(!all(required_vars %in% names(raw_input))){
+  missing_vars <- setdiff(x = required_vars, y = names(raw_input))
+  stop("Missing variables in input: ", paste(missing_vars, collapse = ", "))
+}
+
 selected_input <-
   raw_input %>%
   dplyr::select(
