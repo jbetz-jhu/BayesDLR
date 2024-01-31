@@ -191,10 +191,10 @@ selected_input <-
   ) %>%
   dplyr::rename(
     row_id = !!dplyr::sym(row_id),
-    n_0 = !!dplyr::sym(case_denominator),
-    y_0 = !!dplyr::sym(case_count),
-    n_1 = !!dplyr::sym(control_denominator),
-    y_1 = !!dplyr::sym(control_count)
+    n_1 = !!dplyr::sym(case_denominator),
+    y_1 = !!dplyr::sym(case_count),
+    n_0 = !!dplyr::sym(control_denominator),
+    y_0 = !!dplyr::sym(control_count)
   ) %>%
   dplyr::mutate(
     row = dplyr::row_number()
