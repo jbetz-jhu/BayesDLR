@@ -396,6 +396,12 @@ bb.2c.mixture.optimize <-
     mu.1, mu.2, m.1, m.2, epsilon,
     max.iterations = 1e2,
     tolerance = 1e-8,
+    inv_logit_mu_min = -15,
+    inv_logit_mu_max = 15,
+    log_mu_min = -15,
+    log_mu_max = 15,
+    inv_logit_epsilon_min = -15,
+    inv_logit_epsilon_max = 0,
     verbose = FALSE
   ) {
     
@@ -471,10 +477,12 @@ bb.2c.mixture.optimize <-
             )
           },
           method = c("L-BFGS-B", "nlminb", "bobyqa"),
-          y = results$y.1,
-          t = results$t.k,
-          upper = c( 15,  15,  15,  15, 0),
-          lower = c(-15, -15, -15, -15, -15),
+          upper =
+            c(inv_logit_mu_max, inv_logit_mu_max,
+              log_mu_max, log_mu_max, inv_logit_epsilon_max),
+          lower =
+            c(inv_logit_mu_min, inv_logit_mu_min,
+              log_mu_min, log_mu_min, inv_logit_epsilon_min),
           control =
             list(
               maximize = TRUE,
