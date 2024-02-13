@@ -1,7 +1,7 @@
 BayesDLR: Bayesian Inference for the Diagnostic Likelihood Ratio
 ================
 Josh Betz - Biostatistics Consulting Center (<jbetz@jhu.edu>)
-2024-01-16 10:07
+2024-02-13 10:46
 
 - [Using BayesDLR:](#using-bayesdlr)
   - [Installation:](#installation)
@@ -15,6 +15,7 @@ Josh Betz - Biostatistics Consulting Center (<jbetz@jhu.edu>)
   - [2x2 Table](#2x2-table)
   - [Statistical Model](#statistical-model)
   - [The Role of Sample Sizes](#the-role-of-sample-sizes)
+  - [Checking Output](#checking-output)
 
 This repository is for fitting Empirical Bayes Beta Binomial models to
 prevalence values from two populations. Currently, a single component
@@ -327,3 +328,26 @@ If the relative sample sizes are all equal, this transformation is
 identical. When the relative sample sizes vary, this transformation is
 not the same for all observations. This is why observations with very
 different relative sample size are exclude from analyses.
+
+------------------------------------------------------------------------
+
+## Checking Output
+
+The full output is written to an .Rdata file, with detailed output in an
+.xlsx file. Users should check the model parameters before attempting to
+interpret model output. Particular attention should be paid to the two
+component mixture model. Unusually large values of the M-parameter (the
+‘prior sample size’) or extremely small value of epsilon (the mixing
+coefficient) could indicate problems with model fitting. Parameters are
+constrained by default to be between -30 and 30 on the logit or log
+scale, except the mixing coefficient, which is constrained between -30
+and 0 (i.e. below 50%). Users should check that parameters do not
+converge on the boundary of the parameter space.
+
+Since the two-component model is fit from a grid of starting values,
+analysts should look to see whether there are large differences in model
+fits based on the starting values, and consider whether different
+starting values may be more appropriate.
+
+Maximum marginal likelihood results can also be compared to a full
+Bayesian model fit using Stan.
