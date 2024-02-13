@@ -1,7 +1,7 @@
 BayesDLR: Bayesian Inference for the Diagnostic Likelihood Ratio
 ================
 Josh Betz - Biostatistics Consulting Center (<jbetz@jhu.edu>)
-2024-02-13 10:46
+2024-02-13 10:52
 
 - [Using BayesDLR:](#using-bayesdlr)
   - [Installation:](#installation)
@@ -341,8 +341,9 @@ component mixture model. Unusually large values of the M-parameter (the
 coefficient) could indicate problems with model fitting. Parameters are
 constrained by default to be between -30 and 30 on the logit or log
 scale, except the mixing coefficient, which is constrained between -30
-and 0 (i.e. below 50%). Users should check that parameters do not
-converge on the boundary of the parameter space.
+and 0 (i.e. below 50%). Constraints can be reset by the user. Users
+should check that parameters do not converge on the boundary of the
+parameter space.
 
 Since the two-component model is fit from a grid of starting values,
 analysts should look to see whether there are large differences in model
